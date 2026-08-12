@@ -433,5 +433,93 @@ for (int v = 0; v < V; v++) {
 }`,
       expectedAnswer: "1"
     }
+  },
+
+  // ==================== UNIT 5 MCQ QUESTIONS ====================
+  {
+    id: "q-u5-1",
+    type: "mcq",
+    questionText: "Which sorting algorithm is guaranteed to be stable and run in O(n log n) time across all cases?",
+    options: [
+      "Quick Sort",
+      "Merge Sort",
+      "Heap Sort",
+      "Selection Sort"
+    ],
+    correctAnswer: "Merge Sort",
+    explanation: "Merge sort runs in O(n log n) time for best, average, and worst cases while maintaining stable relative ordering of equal elements.",
+    topicId: "logarithmic-sorts",
+    difficulty: "easy"
+  },
+  {
+    id: "q-u5-2",
+    type: "mcq",
+    questionText: "What is the worst-case time complexity of Quick Sort, and when does it typically occur?",
+    options: [
+      "O(n log n) when the array is randomly shuffled",
+      "O(n²) when the pivot selection consistently matches extreme elements on sorted arrays",
+      "O(n³) when elements contain duplicate values",
+      "O(n log² n) under memory thrashing"
+    ],
+    correctAnswer: "O(n²) when the pivot selection consistently matches extreme elements on sorted arrays",
+    explanation: "Quick sort drops to O(n²) if the partitioning is highly unbalanced, which happens on already sorted data when picking boundary pivots.",
+    topicId: "logarithmic-sorts",
+    difficulty: "medium"
+  },
+  {
+    id: "q-u5-3",
+    type: "mcq",
+    questionText: "Which collision resolution strategy in hashing checks slots using quadratic offsets to reduce primary clustering?",
+    options: [
+      "Linear Probing",
+      "Quadratic Probing",
+      "Double Hashing",
+      "Separate Chaining"
+    ],
+    correctAnswer: "Quadratic Probing",
+    explanation: "Quadratic Probing probes indexes dynamically: (h(key) + i²) % M. This prevents the primary clustering issues of linear probing.",
+    topicId: "hash-collisions",
+    difficulty: "easy"
+  },
+  {
+    id: "q-u5-4",
+    type: "mcq",
+    questionText: "What is the key difference between a Dense Index and a Sparse Index?",
+    options: [
+      "Dense indexes only index primary keys; sparse indexes track duplicates.",
+      "Dense indexing creates one record entry per table record; sparse index creates one entry per table data block.",
+      "Dense indexing is stored in RAM; sparse indexing is written to secondary disk blocks.",
+      "Dense indexing utilizes AVL trees; sparse indexing utilizes heaps."
+    ],
+    correctAnswer: "Dense indexing creates one record entry per table record; sparse index creates one entry per table data block.",
+    explanation: "Dense indexing maps every single table row to an index entry, whereas sparse indexing maps index points to blocks of keys, requiring less memory.",
+    topicId: "indexing-basics",
+    difficulty: "medium"
+  },
+
+  // ==================== UNIT 5 CODE COMPLETION QUESTIONS ====================
+  {
+    id: "q-u5-c1",
+    type: "code",
+    questionText: "Complete the array element shifting condition inside the insertion sort inner loop.",
+    correctAnswer: "arr[j] > key",
+    explanation: "In insertion sort, elements greater than the key are shifted right to make space for correct insertion.",
+    topicId: "quadratic-sorts",
+    difficulty: "hard",
+    codeContext: {
+      language: "c",
+      starterCode: `void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && ______) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}`,
+      expectedAnswer: "arr[j] > key"
+    }
   }
 ];

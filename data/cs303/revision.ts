@@ -66,6 +66,16 @@ export const cs303Formulas: RevisionFormula[] = [
     name: "Directed Graph Edges",
     formula: "V * (V - 1)",
     description: "Maximum number of edges in a simple directed graph of V vertices."
+  },
+  {
+    name: "Linear Probing Index",
+    formula: "(h(key) + i) % M",
+    description: "Collision resolution index probe offset formula using linear increments i."
+  },
+  {
+    name: "Quadratic Probing Index",
+    formula: "(h(key) + i^2) % M",
+    description: "Collision resolution index probe offset formula using quadratic increments i."
   }
 ];
 
@@ -141,5 +151,41 @@ export const cs303Complexities: ComplexityEntry[] = [
     operation: "Shortest Path Routing",
     timeComplexity: "O((V + E) log V)",
     spaceComplexity: "O(V)"
+  },
+  {
+    structure: "Bubble / Insertion Sort",
+    operation: "Sort Array (Worst Case)",
+    timeComplexity: "O(n^2)",
+    spaceComplexity: "O(1)"
+  },
+  {
+    structure: "Quick Sort (Average)",
+    operation: "Sort Array",
+    timeComplexity: "O(n log n)",
+    spaceComplexity: "O(log n)"
+  },
+  {
+    structure: "Merge Sort",
+    operation: "Sort Array",
+    timeComplexity: "O(n log n)",
+    spaceComplexity: "O(n)"
+  },
+  {
+    structure: "Radix Sort",
+    operation: "Sort Integers / Strings",
+    timeComplexity: "O(d * (n + k))",
+    spaceComplexity: "O(n + k)"
+  },
+  {
+    structure: "Binary Search",
+    operation: "Find Key in Sorted List",
+    timeComplexity: "O(log n)",
+    spaceComplexity: "O(1)"
+  },
+  {
+    structure: "Hash Table (Average)",
+    operation: "Lookup / Insert / Delete",
+    timeComplexity: "O(1)",
+    spaceComplexity: "O(n)"
   }
 ];

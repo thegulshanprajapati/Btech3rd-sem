@@ -198,96 +198,125 @@ ptr = (<span class="type">int</span>*) <span class="function">realloc</span>(ptr
             title: "Graph Definition & Terminology",
             content: `
               <p>A graph <strong>G = (V, E)</strong> is a non‑linear data structure consisting of a set of vertices (nodes) <strong>V</strong> and a set of edges <strong>E</strong> that connect pairs of vertices.</p>
-              <h3>Core Terminology</h3>
+            `
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: "unit5",
+    number: 5,
+    title: "Sorting, Searching, Hashing and Indexing",
+    description: "Stable and in-place comparisons sorting, linear and binary search algorithms, separate chaining/open addressing hash tables, and database indexes.",
+    topics: [
+      {
+        id: "sorting-section",
+        title: "Sorting Algorithms",
+        content: "Comparison and non-comparison sorting techniques: Bubble, Selection, Insertion, Quick, Merge, Shell, and Radix Sort.",
+        subtopics: [
+          {
+            id: "sorting-concepts",
+            title: "Sorting Concepts & Recap",
+            content: `
+              <p><strong>Sorting</strong> is the process of arranging data elements in a specified order, typically ascending or descending, based on a key value.</p>
               <ul>
-                <li><strong>Vertex (Node):</strong> A single structural element.</li>
-                <li><strong>Edge:</strong> Connection link between two vertices; can be directed (digraph) or undirected.</li>
-                <li><strong>Degree:</strong> Number of edges incident to a node (in-degree/out-degree for digraphs).</li>
-                <li><strong>Connected Graph:</strong> A path exists between every pair of vertices.</li>
+                <li><strong>Stable Sorting:</strong> Does not change the relative order of equal elements (e.g. Bubble, Insertion, Merge Sort).</li>
+                <li><strong>In-place Sorting:</strong> Requires constant <code>O(1)</code> auxiliary memory (e.g. Bubble, Selection, Insertion, Heap Sort).</li>
+                <li><strong>Internal vs External:</strong> Internal sorting fits all elements in main RAM; external operates on file blocks stored on secondary disks.</li>
               </ul>
-              
-              <div class="diagram-container">
-                <pre>
-Undirected Graph:          Directed Graph:
-    A                       A &rarr;&rarr; B
-   / \\                      &darr;    &darr;
-  B&mdash;&mdash;&mdash;C                      C &larr;&larr; D
-                </pre>
+            `
+          },
+          {
+            id: "quadratic-sorts",
+            title: "Quadratic Sorts: Bubble, Selection & Insertion",
+            content: `
+              <p>Quadratic sorts run in <code>O(n²)</code> average/worst time. Insertion sort provides <code>O(n)</code> time for already sorted data.</p>
+              <h3>Insertion Sort C Implementation</h3>
+              <div class="code-container">
+                <div class="code-header"><span class="code-lang">c</span><button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy</button></div>
+                <pre><code><span class="type">void</span> <span class="function">insertionSort</span>(<span class="type">int</span> arr[], <span class="type">int</span> n) {
+    <span class="keyword">for</span> (<span class="type">int</span> i = 1; i &lt; n; i++) {
+        <span class="type">int</span> key = arr[i];
+        <span class="type">int</span> j = i-1;
+        <span class="keyword">while</span> (j &gt;= 0 && arr[j] &gt; key) {
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = key;
+    }
+}</code></pre>
               </div>
             `
           },
           {
-            id: "graph-representation",
-            title: "Matrix vs List Representations",
+            id: "logarithmic-sorts",
+            title: "Logarithmic Sorts: Quick & Merge Sort",
             content: `
-              <p>Graphs are typically represented in memory using either an <strong>Adjacency Matrix</strong> (2D array) or an <strong>Adjacency List</strong> (linked list array).</p>
-              <h3>Comparison Table</h3>
-              <div class="table-responsive">
-                <table>
-                  <thead>
-                    <tr><th>Feature</th><th>Adjacency Matrix</th><th>Adjacency List</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Space Complexity</td><td><code>O(V²)</code></td><td><code>O(V + E)</code></td></tr>
-                    <tr><td>Edge Verification</td><td><code>O(1)</code></td><td><code>O(deg(u))</code></td></tr>
-                    <tr><td>Graph density choice</td><td>Best for dense graphs</td><td>Best for sparse graphs</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            `
-          }
-        ]
-      },
-      {
-        id: "graph-traversals",
-        title: "Graph Traversals & C Code",
-        content: "Exploring graphs using Breadth First Search (BFS) and Depth First Search (DFS).",
-        subtopics: [
-          {
-            id: "graph-bfs",
-            title: "BFS: Breadth-First-Search",
-            content: `
-              <p>BFS explores nodes level by level using a Queue helper. Time Complexity is <code>O(V + E)</code> (using list) or <code>O(V²)</code> (using matrix).</p>
-              <h3>BFS Implementation in C (Adjacency Matrix)</h3>
+              <p>Logarithmic sorts use divide-and-conquer to achieve <code>O(n log n)</code> time complexities.</p>
+              <ul>
+                <li><strong>Quick Sort:</strong> Selects a pivot and partitions array around it. Worst-case is <code>O(n²)</code> if pivot selection is poor.</li>
+                <li><strong>Merge Sort:</strong> Divides array recursively, sorts sub-segments, and merges them. Requires <code>O(n)</code> extra space.</li>
+              </ul>
+              <h3>Quick Sort C Implementation</h3>
               <div class="code-container">
                 <div class="code-header"><span class="code-lang">c</span><button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy</button></div>
-                <pre><code><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
-<span class="keyword">#define</span> V 5
-
-<span class="type">void</span> <span class="function">BFS</span>(<span class="type">int</span> graph[V][V], <span class="type">int</span> start) {
-    <span class="type">int</span> visited[V] = {0};
-    <span class="type">int</span> queue[V], front = 0, rear = 0;
-    visited[start] = 1;
-    queue[rear++] = start;
-    <span class="keyword">while</span> (front &lt; rear) {
-        <span class="type">int</span> u = queue[front++];
-        <span class="function">printf</span>(<span class="string">"%d "</span>, u);
-        <span class="keyword">for</span> (<span class="type">int</span> v = 0; v &lt; V; v++) {
-            <span class="keyword">if</span> (graph[u][v] == 1 && !visited[v]) {
-                visited[v] = 1;
-                queue[rear++] = v;
-            }
+                <pre><code><span class="type">int</span> <span class="function">partition</span>(<span class="type">int</span> arr[], <span class="type">int</span> low, <span class="type">int</span> high) {
+    <span class="type">int</span> pivot = arr[high];
+    <span class="type">int</span> i = low - 1;
+    <span class="keyword">for</span> (<span class="type">int</span> j = low; j &lt; high; j++) {
+        <span class="keyword">if</span> (arr[j] &lt;= pivot) {
+            i++;
+            <span class="type">int</span> temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;
         }
     }
+    <span class="type">int</span> temp = arr[i+1]; arr[i+1] = arr[high]; arr[high] = temp;
+    <span class="keyword">return</span> i+1;
+}
+
+<span class="type">void</span> <span class="function">quickSort</span>(<span class="type">int</span> arr[], <span class="type">int</span> low, <span class="type">int</span> high) {
+    <span class="keyword">if</span> (low &lt; high) {
+        <span class="type">int</span> pi = <span class="function">partition</span>(arr, low, high);
+        <span class="function">quickSort</span>(arr, low, pi-1);
+        <span class="function">quickSort</span>(arr, pi+1, high);
+    }
 }</code></pre>
               </div>
             `
           },
           {
-            id: "graph-dfs",
-            title: "DFS: Depth-First-Search",
+            id: "shell-radix-sorts",
+            title: "Advanced Sorts: Shell & Radix Sort",
             content: `
-              <p>DFS explores branches deeply before backtracking, using recursion or an explicit Stack structure.</p>
-              <h3>DFS Recursive Implementation (Adjacency Matrix)</h3>
+              <ul>
+                <li><strong>Shell Sort:</strong> Compares elements separated by a gap sequence (e.g. n/2, n/4...), reducing elements shift overhead.</li>
+                <li><strong>Radix Sort:</strong> Non-comparative integer sorting algorithm. Sorts digit-by-digit (LSD to MSD) using stable counting sort. Time: <code>O(d * (n + k))</code>.</li>
+              </ul>
+            `
+          }
+        ]
+      },
+      {
+        id: "searching-section",
+        title: "Searching Algorithms",
+        content: "Linear sequential searches and logarithmic sorted binary searches.",
+        subtopics: [
+          {
+            id: "search-algorithms",
+            title: "Linear Search vs Binary Search",
+            content: `
+              <p>Binary search requires sorted lists and cuts the lookup space in half at each iteration.</p>
+              <h3>Recursive Binary Search C Implementation</h3>
               <div class="code-container">
                 <div class="code-header"><span class="code-lang">c</span><button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy</button></div>
-                <pre><code><span class="type">void</span> <span class="function">DFS</span>(<span class="type">int</span> graph[V][V], <span class="type">int</span> visited[V], <span class="type">int</span> u) {
-    visited[u] = 1;
-    <span class="function">printf</span>(<span class="string">"%d "</span>, u);
-    <span class="keyword">for</span> (<span class="type">int</span> v = 0; v &lt; V; v++) {
-        <span class="keyword">if</span> (graph[u][v] == 1 && !visited[v])
-            <span class="function">DFS</span>(graph, visited, v);
+                <pre><code><span class="type">int</span> <span class="function">binarySearch</span>(<span class="type">int</span> arr[], <span class="type">int</span> low, <span class="type">int</span> high, <span class="type">int</span> key) {
+    <span class="keyword">if</span> (low &lt;= high) {
+        <span class="type">int</span> mid = low + (high - low) / 2;
+        <span class="keyword">if</span> (arr[mid] == key) <span class="keyword">return</span> mid;
+        <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid] &lt; key) <span class="keyword">return</span> <span class="function">binarySearch</span>(arr, mid+1, high, key);
+        <span class="keyword">else</span> <span class="keyword">return</span> <span class="function">binarySearch</span>(arr, low, mid-1, key);
     }
+    <span class="keyword">return</span> -1;
 }</code></pre>
               </div>
             `
@@ -295,43 +324,32 @@ Undirected Graph:          Directed Graph:
         ]
       },
       {
-        id: "graph-mst-shortest-paths",
-        title: "Minimum Spanning Tree & Shortest Paths",
-        content: "Kruskal/Prim minimum spanning algorithms and Dijkstra's single-source shortest path.",
+        id: "hashing-section",
+        title: "Hashing & Indexing",
+        content: "Hash tables, collision resolution chains, linear/quadratic probing, and database index structures.",
         subtopics: [
           {
-            id: "graph-mst",
-            title: "MST: Kruskal & Prim Algorithms",
+            id: "hash-collisions",
+            title: "Hash Tables & Collision Resolutions",
             content: `
-              <p>A spanning tree of V vertices has exactly <code>V - 1</code> edges with no cycles. The Minimum Spanning Tree (MST) yields the minimum total weight.</p>
+              <p>A hash function maps keys to indices in range <code>[0, M-1]</code>. When keys overlap (collisions), we use resolution strategies:</p>
               <ul>
-                <li><strong>Kruskal's Algorithm:</strong> Greedy. Sorts all edges, selects edge if it does not form a cycle (via Union-Find). Time: <code>O(E log E)</code>.</li>
-                <li><strong>Prim's Algorithm:</strong> Greedy. Expands one vertex at a time, selecting the smallest link connecting unvisited nodes. Time: <code>O(E log V)</code>.</li>
+                <li><strong>Separate Chaining:</strong> Slots link to dynamic nodes (linked list buckets).</li>
+                <li><strong>Open Addressing (Linear Probing):</strong> Probes sequentially: <code>(h(key) + i) % M</code>. Causes primary clustering.</li>
+                <li><strong>Double Hashing:</strong> Probes using a second hash function step: <code>(h1(key) + i * h2(key)) % M</code>.</li>
               </ul>
             `
           },
           {
-            id: "graph-dijkstra",
-            title: "Dijkstra Shortest Path Algorithm",
+            id: "indexing-basics",
+            title: "Indexing Concepts & Systems",
             content: `
-              <p>Finds the shortest distance from a single source to all vertices in a weighted graph with non-negative weights.</p>
-              <h3>Dijkstra C Implementation (Adjacency Matrix)</h3>
-              <div class="code-container">
-                <div class="code-header"><span class="code-lang">c</span><button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy</button></div>
-                <pre><code><span class="type">void</span> <span class="function">dijkstra</span>(<span class="type">int</span> graph[V][V], <span class="type">int</span> src) {
-    <span class="type">int</span> dist[V], visited[V] = {0};
-    <span class="keyword">for</span> (<span class="type">int</span> i = 0; i &lt; V; i++) dist[i] = INT_MAX;
-    dist[src] = 0;
-    <span class="keyword">for</span> (<span class="type">int</span> count = 0; count &lt; V-1; count++) {
-        <span class="type">int</span> u = <span class="function">minDistance</span>(dist, visited);
-        visited[u] = 1;
-        <span class="keyword">for</span> (<span class="type">int</span> v = 0; v &lt; V; v++)
-            <span class="keyword">if</span> (!visited[v] && graph[u][v] && dist[u] != INT_MAX
-                && dist[u] + graph[u][v] &lt; dist[v])
-                dist[v] = dist[u] + graph[u][v];
-    }
-}</code></pre>
-              </div>
+              <p>Indexing maps lookup keys to physical disk block pointer addresses to avoid scanning entire data tables.</p>
+              <ul>
+                <li><strong>Dense Index:</strong> Contains one entry for every record in the table.</li>
+                <li><strong>Sparse Index:</strong> Contains one entry per data block.</li>
+                <li><strong>B/B+ Tree Index:</strong> Balanced multi-way trees used in relational databases for sequential and range indexing.</li>
+              </ul>
             `
           }
         ]
@@ -339,3 +357,5 @@ Undirected Graph:          Directed Graph:
     ]
   }
 ];
+export const cs303Revision = {};
+export const cs303Complexities = {};

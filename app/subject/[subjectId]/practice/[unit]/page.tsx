@@ -54,7 +54,7 @@ export default function PracticeView() {
     notFound();
   }
 
-  if (isCS303 && (unit !== "1" && unit !== "2" && unit !== "3" && unit !== "4")) {
+  if (isCS303 && (unit !== "1" && unit !== "2" && unit !== "3" && unit !== "4" && unit !== "5")) {
     notFound();
   }
 
@@ -96,14 +96,20 @@ export default function PracticeView() {
           q.topicId.startsWith("heaps-") ||
           q.topicId.startsWith("advanced-")
         );
+      } else if (unitNum === 4) {
+        return cs303Questions.filter(q => 
+          q.topicId.startsWith("graph-") ||
+          q.topicId.startsWith("graph")
+        );
       } else {
         return cs303Questions.filter(q => 
-          q.topicId.startsWith("tree-") ||
-          q.topicId.startsWith("bst-") ||
-          q.topicId.startsWith("avl-") ||
-          q.topicId.startsWith("heaps-") ||
-          q.topicId.startsWith("advanced-") ||
-          q.topicId.startsWith("graph-")
+          q.topicId.startsWith("sorting-") ||
+          q.topicId.startsWith("quadratic-") ||
+          q.topicId.startsWith("logarithmic-") ||
+          q.topicId.startsWith("shell-") ||
+          q.topicId.startsWith("search-") ||
+          q.topicId.startsWith("hash-") ||
+          q.topicId.startsWith("indexing-")
         );
       }
     } else {

@@ -24,7 +24,7 @@ export default function ReadingView() {
     notFound();
   }
 
-  if (isCS303 && (block !== "unit1" && block !== "unit2" && block !== "unit3" && block !== "unit4")) {
+  if (isCS303 && (block !== "unit1" && block !== "unit2" && block !== "unit3" && block !== "unit4" && block !== "unit5")) {
     notFound();
   }
 

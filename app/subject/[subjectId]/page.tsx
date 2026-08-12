@@ -46,8 +46,10 @@ export default async function SubjectDashboard({ params }: SubjectDashboardProps
         return questions.filter(q => q.topicId.startsWith("stack-") || q.topicId.startsWith("evaluations-") || q.topicId.startsWith("queue-") || q.topicId.startsWith("circular-queue-") || q.topicId.startsWith("deque-") || q.topicId.startsWith("priority-queue-") || q.topicId.startsWith("simulation-")).length;
       } else if (unitNum === 3) {
         return questions.filter(q => q.topicId.startsWith("tree-") || q.topicId.startsWith("bst-") || q.topicId.startsWith("avl-") || q.topicId.startsWith("heaps-") || q.topicId.startsWith("advanced-")).length;
+      } else if (unitNum === 4) {
+        return questions.filter(q => q.topicId.startsWith("graph-") || q.topicId.startsWith("graph")).length;
       } else {
-        return questions.filter(q => q.topicId.startsWith("tree-") || q.topicId.startsWith("bst-") || q.topicId.startsWith("avl-") || q.topicId.startsWith("heaps-") || q.topicId.startsWith("advanced-") || q.topicId.startsWith("graph-")).length;
+        return questions.filter(q => q.topicId.startsWith("sorting-") || q.topicId.startsWith("quadratic-") || q.topicId.startsWith("logarithmic-") || q.topicId.startsWith("shell-") || q.topicId.startsWith("search-") || q.topicId.startsWith("hash-") || q.topicId.startsWith("indexing-")).length;
       }
     } else {
       // CS302 discrete math filters
@@ -58,6 +60,7 @@ export default async function SubjectDashboard({ params }: SubjectDashboardProps
   const u1Vvi = questions.filter(q => q.id.startsWith("q-u1-"));
   const u2Vvi = questions.filter(q => q.id.startsWith("q-u2-"));
   const u3Vvi = questions.filter(q => q.id.startsWith("q-u3-"));
+  const u5Vvi = questions.filter(q => q.id.startsWith("q-u5-"));
 
   return (
     <div className={styles.wrapper}>
@@ -162,6 +165,24 @@ export default async function SubjectDashboard({ params }: SubjectDashboardProps
                       <li>
                         <strong>How are Heaps mapped onto contiguous array indices?</strong>
                         <p>A heap indexes left child at 2i+1, right child at 2i+2, and parent at (i-1)/2 relative to child index i.</p>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+
+                <div className={styles.vviCard}>
+                  <div className={styles.vviCardHeader}>
+                    <i className="fa-solid fa-bookmark"></i> Unit V VVI Database ({u5Vvi.length} Questions)
+                  </div>
+                  <div className={styles.vviContent}>
+                    <ol className={styles.vviList}>
+                      <li>
+                        <strong>Define Stable Sorting and give examples.</strong>
+                        <p>Stable sorting algorithms preserve the relative order of duplicate elements post-sort (e.g. Bubble, Insertion, and Merge Sort).</p>
+                      </li>
+                      <li>
+                        <strong>Explain Separate Chaining vs Open Addressing in Hash Tables.</strong>
+                        <p>Separate Chaining handles collisions by linking collided elements inside slot buckets. Open Addressing resolves collisions by probing empty indexes inside the table arrays (e.g. Linear Probing).</p>
                       </li>
                     </ol>
                   </div>
