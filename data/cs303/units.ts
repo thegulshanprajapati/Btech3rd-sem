@@ -111,37 +111,37 @@ arr[2] = *(arr+2) = 30
               <h3>C Code Example: Dynamic Memory &amp; Structures</h3>
               <div class="code-container">
                 <div class="code-header"><span class="code-lang">c</span><button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy</button></div>
-                <pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+                <pre><code><span class="comment">#include &lt;stdio.h&gt;</span>
+<span class="comment">#include &lt;stdlib.h&gt;</span>
 
-struct Node {
-    int data;
-    struct Node *next;
+<span class="keyword">struct</span> <span class="type">Node</span> {
+    <span class="type">int</span> data;
+    <span class="keyword">struct</span> <span class="type">Node</span> *next;
 };
-typedef struct Node node;
+<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="type">Node</span> <span class="type">node</span>;
 
-int main() {
-    int n = 5;
-    // malloc: allocates uninitialized memory
-    int *ptr = (int*) malloc(n * sizeof(int));
-    if(ptr == NULL) exit(1);
-    for(int i=0; i&lt;n; i++) ptr[i] = i+1;
+<span class="type">int</span> <span class="function">main</span>() {
+    <span class="type">int</span> n = 5;
+    <span class="comment">// malloc: allocates uninitialized memory</span>
+    <span class="type">int</span> *ptr = (<span class="type">int</span>*) <span class="function">malloc</span>(n * <span class="keyword">sizeof</span>(<span class="type">int</span>));
+    <span class="keyword">if</span>(ptr == <span class="type">NULL</span>) <span class="function">exit</span>(1);
+    <span class="keyword">for</span>(<span class="type">int</span> i=0; i&lt;n; i++) ptr[i] = i+1;
     
-    // calloc: allocates and initializes to 0
-    int *ptr2 = (int*) calloc(n, sizeof(int));
+    <span class="comment">// calloc: allocates and initializes to 0</span>
+    <span class="type">int</span> *ptr2 = (<span class="type">int</span>*) <span class="function">calloc</span>(n, <span class="keyword">sizeof</span>(<span class="type">int</span>));
     
-    // realloc: resize previously allocated block
-    ptr = (int*) realloc(ptr, 10 * sizeof(int));
+    <span class="comment">// realloc: resize previously allocated block</span>
+    ptr = (<span class="type">int</span>*) <span class="function">realloc</span>(ptr, 10 * <span class="keyword">sizeof</span>(<span class="type">int</span>));
     
-    free(ptr);
-    free(ptr2);
+    <span class="function">free</span>(ptr);
+    <span class="function">free</span>(ptr2);
     
-    // Usage of struct pointer
-    node *head = (node*) malloc(sizeof(node));
+    <span class="comment">// Usage of struct pointer</span>
+    <span class="type">node</span> *head = (<span class="type">node</span>*) <span class="function">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">node</span>));
     head-&gt;data = 10;
-    head-&gt;next = NULL;
-    free(head);
-    return 0;
+    head-&gt;next = <span class="type">NULL</span>;
+    <span class="function">free</span>(head);
+    <span class="keyword">return</span> 0;
 }</code></pre>
               </div>
             `
