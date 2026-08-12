@@ -223,3 +223,128 @@ strong, b {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+/* Colorful Study Layouts & Interactive Visual Elements */
+.badge-color-blue {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.badge-color-green {
+  background: linear-gradient(135deg, #059669, #047857);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.badge-color-purple {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.highlight-cyan {
+  background-color: rgba(6, 182, 212, 0.15);
+  color: #0891b2;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.highlight-amber {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.highlight-emerald {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.highlight-rose {
+  background-color: rgba(244, 63, 94, 0.15);
+  color: #e11d48;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Beautiful color-coded key-value definition structures */
+.term-card {
+  border-left: 4px solid var(--primary);
+  background-color: var(--bg-secondary);
+  box-shadow: var(--card-shadow);
+  padding: 14px 18px;
+  border-radius: 0 12px 12px 0;
+  margin: 16px 0;
+  transition: var(--transition);
+}
+
+.term-card:hover {
+  transform: translateX(4px);
+}
+
+.term-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.term-card-title.blue { color: #2563eb; }
+.term-card-title.purple { color: #7c3aed; }
+.term-card-title.emerald { color: #059669; }
+.term-card-title.rose { color: #e11d48; }
+
+.term-card-desc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Formula Highlight Box */
+.formula-box {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(6, 182, 212, 0.08));
+  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 20px 0;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* Color matrix columns */
+.color-table th {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #ffffff !important;
+}
+
+.color-table tr:nth-child(even) {
+  background-color: var(--bg-tertiary);
+}
+

@@ -18,19 +18,48 @@ export const cs303Units: Unit[] = [
             content: `
               <p><strong>Definition:</strong> C is a structured, high-level programming language that provides low‑level memory access, a rich set of operators, and constructs for modular programming. It is the primary implementation language for data structures in this course.</p>
               <p><strong>Introduction:</strong> Data structures are built using arrays, pointers, structures, and dynamic memory. A solid grasp of these C features is essential before designing efficient algorithms.</p>
-              <h3>Terminology</h3>
-              <ul>
-                <li><strong>Pointer:</strong> A variable holding the address of another variable.</li>
-                <li><strong>Pointer Arithmetic:</strong> Adding/subtracting integers to pointers moves by the size of the pointed type.</li>
-                <li><strong>Array‑Pointer Equivalence:</strong> <code>arr[i]</code> &harr; <code>*(arr + i)</code>.</li>
-                <li><strong>Structure Pointer:</strong> A pointer to a <code>struct</code>; members accessed with <code>-&gt;</code>.</li>
-                <li><strong>Dynamic Memory:</strong> Heap memory allocated during execution; persists until <code>free()</code> is called.</li>
-                <li><strong>Memory Leak:</strong> Allocated memory not freed, causing wastage of system memory.</li>
-                <li><strong>Dangling Pointer:</strong> A pointer pointing to a memory location that has been freed or deallocated.</li>
-              </ul>
-              <div class="diagram-container">
+              
+              <h3>Terminology Guide</h3>
+              
+              <div class="term-card" style="border-left-color: #2563eb;">
+                <div class="term-card-title blue">
+                  <i class="fa-solid fa-arrow-pointer"></i> Pointer
+                </div>
+                <div class="term-card-desc">
+                  A variable that stores the direct <span class="highlight-cyan">memory address</span> of another variable rather than storing a value directly.
+                </div>
+              </div>
+
+              <div class="term-card" style="border-left-color: #7c3aed;">
+                <div class="term-card-title purple">
+                  <i class="fa-solid fa-plus-minus"></i> Pointer Arithmetic
+                </div>
+                <div class="term-card-desc">
+                  Performing addition or subtraction on a pointer, which shifts the address pointer offset automatically based on the size of its base data type (<span class="highlight-amber">sizeof(type)</span>).
+                </div>
+              </div>
+
+              <div class="term-card" style="border-left-color: #059669;">
+                <div class="term-card-title emerald">
+                  <i class="fa-solid fa-shuffle"></i> Array‑Pointer Equivalence
+                </div>
+                <div class="term-card-desc">
+                  The semantic identity in C where subscript syntax is identical to pointer offset dereference: <code>arr[i] &harr; *(arr + i)</code>.
+                </div>
+              </div>
+
+              <div class="term-card" style="border-left-color: #e11d48;">
+                <div class="term-card-title rose">
+                  <i class="fa-solid fa-triangle-exclamation"></i> Memory Leak
+                </div>
+                <div class="term-card-desc">
+                  A critical error occurring when heap memory allocated dynamically is not released via <code>free()</code>, rendering it permanently claimed and wasted.
+                </div>
+              </div>
+
+              <div class="diagram-container" style="border: 2px solid #3b82f6;">
                 <pre>
-<strong>Memory Representation of a Pointer:</strong>
+<strong style="color: #2563eb;">Memory Representation of a Pointer:</strong>
 int a = 10;
 int *p = &amp;a;
 
@@ -44,7 +73,7 @@ int *p = &amp;a;
   | 0x100 |  &larr; address 0x200 (p)
   +-------+
 
-<strong>Array‑Pointer Relation:</strong>
+<strong style="color: #7c3aed;">Array‑Pointer Relation:</strong>
 int arr[3] = {10,20,30};
 
 arr[0] = *(arr+0) = 10
@@ -59,19 +88,27 @@ arr[2] = *(arr+2) = 30
             title: "Key C Constructs for Data Structures",
             content: `
               <p>The implementation of data structures relies on ten key C constructs:</p>
-              <ol>
-                <li><strong>Variables & Data Types:</strong> Primitive types (<code>int</code>, <code>char</code>, <code>float</code>, <code>double</code>, <code>void</code>), pointers, and user-defined types.</li>
-                <li><strong>Operators:</strong> Arithmetic, relational, logical, bitwise, assignment, and pointer operators (<code>*</code>, <code>&amp;</code>, <code>-&gt;</code>, <code>.</code>).</li>
-                <li><strong>Control Statements:</strong> Decisions (<code>if-else</code>, <code>switch</code>) and loops (<code>for</code>, <code>while</code>, <code>do-while</code>).</li>
-                <li><strong>Functions:</strong> Modular blocks of code supporting pass-by-value and pass-by-reference.</li>
-                <li><strong>Recursion:</strong> A function calling itself with a base terminating condition.</li>
-                <li><strong>Arrays:</strong> Contiguous, fixed-size collections of homogeneous elements.</li>
-                <li><strong>Pointers:</strong> Reference-holders storing memory addresses.</li>
-                <li><strong>Structures:</strong> User-defined collections of heterogeneous variables.</li>
-                <li><strong>Dynamic Memory Allocation:</strong> Functions like <code>malloc()</code>, <code>calloc()</code>, <code>realloc()</code>, and <code>free()</code>.</li>
-                <li><strong>typedef:</strong> Creating aliases to improve type-declaration readability.</li>
-              </ol>
-              <h3>C Code Example: Dynamic Memory & Structures</h3>
+              <div class="table-responsive">
+                <table class="color-table" style="width:100%; border-collapse:collapse; margin: 15px 0;">
+                  <thead>
+                    <tr><th style="padding: 10px;">Construct</th><th style="padding: 10px;">Description</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td style="padding: 10px; font-weight:700; color:#2563eb;">1. Variables &amp; Types</td><td style="padding: 10px;">Primitive types (<code>int</code>, <code>char</code>) and user-defined structures.</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#059669;">2. Operators</td><td style="padding: 10px;">Arithmetic, assignment, and address dereference/access (<code>*</code>, <code>&amp;</code>, <code>-&gt;</code>).</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#d97706;">3. Control Statements</td><td style="padding: 10px;">Conditional execution logic (<code>if-else</code>, <code>switch</code>) and loop runs.</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#7c3aed;">4. Functions</td><td style="padding: 10px;">Passing parameters by value or references using pointer parameters.</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#e11d48;">5. Recursion</td><td style="padding: 10px;">A function calling itself; must define a reliable base terminating step.</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#0891b2;">6. Arrays</td><td style="padding: 10px;">Contiguous, fixed-size memory slots holding homogeneous elements.</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#4f46e5;">7. Pointers</td><td style="padding: 10px;">Holding variable addresses on the system stack or heap.</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#db2777;">8. Structures</td><td style="padding: 10px;">Custom data types enclosing heterogeneous properties.</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#059669;">9. Dynamic Allocation</td><td style="padding: 10px;">Runtime memory handling via <code>malloc()</code>, <code>calloc()</code>, <code>realloc()</code>, and <code>free()</code>.</td></tr>
+                    <tr><td style="padding: 10px; font-weight:700; color:#7c3aed;">10. typedef</td><td style="padding: 10px;">Aliasing existing names into readable clean type structures.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <h3>C Code Example: Dynamic Memory &amp; Structures</h3>
               <div class="code-container">
                 <div class="code-header"><span class="code-lang">c</span><button class="copy-btn"><i class="fa-regular fa-copy"></i> Copy</button></div>
                 <pre><code>#include &lt;stdio.h&gt;
