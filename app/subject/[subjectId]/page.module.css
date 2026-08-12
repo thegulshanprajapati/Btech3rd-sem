@@ -1,0 +1,284 @@
+.wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+.main {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.backLink {
+  margin-bottom: 30px;
+}
+
+.backLink a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.backLink a:hover {
+  color: var(--primary);
+  transform: translateX(-3px);
+}
+
+.header {
+  margin-bottom: 50px;
+}
+
+.courseBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.sectionHeading {
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sectionSubText {
+  color: var(--text-muted);
+  margin-top: -18px;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+}
+
+.unitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 30px;
+}
+
+.unitCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+}
+
+.unitCard:hover {
+  border-color: rgba(79, 70, 229, 0.3);
+  box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.08);
+}
+
+.unitCardTop {
+  flex: 1;
+}
+
+.unitNumberBadge {
+  display: inline-block;
+  padding: 3px 8px;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.unitTitle {
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.unitDesc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+}
+
+.unitActions {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.readBtn, .practiceBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.readBtn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+}
+
+.readBtn:hover {
+  background-color: #4338ca;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+.practiceBtn {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.practiceBtn:hover {
+  background-color: var(--primary-light);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.05);
+}
+
+.vviGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+  gap: 30px;
+}
+
+.vviCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.vviCardHeader {
+  background-color: var(--bg-tertiary);
+  padding: 16px 24px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vviContent {
+  padding: 24px;
+}
+
+.vviList {
+  list-style-type: none;
+}
+
+.vviList li {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.vviList li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.vviList li strong {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.vviList li p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.revisionContainer {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+}
+
+.revSection h3 {
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+/* Custom Table Resets for CSS Modules */
+.revisionContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.revisionContainer th, .revisionContainer td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.revisionContainer th {
+  background-color: var(--bg-tertiary);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.revisionContainer td code {
+  background-color: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+@media (max-width: 992px) {
+  .unitsGrid, .vviGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .unitActions {
+    flex-direction: column;
+  }
+}

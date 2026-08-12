@@ -1,0 +1,342 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+}
+
+.layout {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.sidebar {
+  width: 320px;
+  border-right: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  flex-shrink: 0;
+  display: block;
+}
+
+.sidebarSticky {
+  position: sticky;
+  top: 70px; /* Offset for Header height */
+  height: calc(100vh - 70px);
+  padding: 30px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+.backButton:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: translateX(-3px);
+}
+
+.sidebarTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.unitNameBadge {
+  display: inline-block;
+  padding: 3px 8px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+.menuWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menuGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menuHeader {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 10px 0 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menuHeader::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+  opacity: 0.5;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: var(--transition);
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.menuItem.active {
+  background: linear-gradient(135deg, var(--primary-light) 0%, rgba(99, 102, 241, 0.05) 100%);
+  color: var(--primary);
+  font-weight: 600;
+  border-color: rgba(79, 70, 229, 0.15);
+  box-shadow: 0 4px 12px -5px rgba(79, 70, 229, 0.12);
+}
+
+.menuItem.active::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  margin-left: auto;
+  box-shadow: 0 0 8px var(--primary);
+}
+
+.subItem {
+  padding-left: 24px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  border-left: 1px dashed var(--border-color);
+  margin-left: 10px;
+  border-radius: 0 8px 8px 0;
+}
+
+.subItem:hover {
+  padding-left: 28px;
+  color: var(--text-primary);
+  transform: translateX(2px);
+}
+
+.subItem.active {
+  padding-left: 24px;
+  border-left: 1px solid var(--primary);
+}
+
+/* Reading Content */
+.contentPanel {
+  flex: 1;
+  min-width: 0;
+  padding: 50px 80px;
+}
+
+.readingHeader {
+  margin-bottom: 40px;
+}
+
+.contentBadge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mainTitle {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.mainDesc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.topicSection {
+  margin-bottom: 50px;
+}
+
+.subtopicBlock {
+  margin-bottom: 45px;
+}
+
+.h2Heading {
+  font-size: 1.8rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  scroll-margin-top: 90px;
+}
+
+.h2Heading::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 1.8rem;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.h3Heading {
+  font-size: 1.35rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: var(--primary);
+  scroll-margin-top: 90px;
+}
+
+.htmlContent {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.htmlContent p {
+  margin-bottom: 16px;
+}
+
+.htmlContent ul, .htmlContent ol {
+  margin-left: 24px;
+  margin-bottom: 20px;
+}
+
+.htmlContent li {
+  margin-bottom: 8px;
+}
+
+/* Custom Table inside CSS Module */
+.htmlContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.htmlContent th, .htmlContent td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+.htmlContent th {
+  background-color: var(--bg-tertiary);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.htmlContent code {
+  background-color: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+.practiceEndBox {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  margin-top: 60px;
+}
+
+.practiceEndBox h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.practiceEndBox p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.practiceEndBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 700;
+  border-radius: 12px;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.practiceEndBtn:hover {
+  background-color: #4338ca;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    display: none; /* Hide sidebar list on mobile, rely on main scroll */
+  }
+  .contentPanel {
+    padding: 30px 24px;
+  }
+}
